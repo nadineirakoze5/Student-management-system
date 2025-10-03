@@ -16,12 +16,13 @@ public class Main {
 
         viewAllStudents();
 
-        updateStudent(1, "Mukama", 25, "john.mukama@email.com", "Advanced Computer Science");
+        updateStudent(106, "Mukama", 25, "john.mukama@email.com", "Advanced Computer Science");
+
 
         System.out.println("\n=== AFTER UPDATE ===");
         viewAllStudents();
 
-        deleteStudent(2);
+        deleteStudent(106);
         System.out.println("\n=== AFTER DELETE ===");
         viewAllStudents();
 
@@ -79,7 +80,7 @@ public class Main {
     }
 
     private static void updateStudent(int id, String name, int age, String email, String course) {
-        String sql = "UPDATE students SET name = 'mukama', age = 25, email = 'mukama@email.com', course = 'biology' WHERE id = 81";
+        String sql = "UPDATE students SET name = ?, age = ?, email = ?, course = ? WHERE id = ?";
 
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement statement = conn.prepareStatement(sql)) {
@@ -103,7 +104,7 @@ public class Main {
     }
 
     private static void deleteStudent(int id) {
-        String sql = "DELETE FROM students WHERE id = 82";
+        String sql = "DELETE FROM students WHERE id = ?";
 
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement statement = conn.prepareStatement(sql)) {
